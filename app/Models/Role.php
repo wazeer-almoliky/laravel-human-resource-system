@@ -15,6 +15,6 @@ class Role extends Model
     }
 
     public function users(){
-        return $this->belongsTomany(User::class,'users_role');
+        return $this->belongsTomany(User::class,'users_roles');
    }
 }

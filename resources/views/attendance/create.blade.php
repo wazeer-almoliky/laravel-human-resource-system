@@ -50,44 +50,26 @@
 	<div class="col-lg-12 col-md-12">>
 		<div class="card">
 			<div class="card-body">
-				<form action="{{route('employee.store')}}" method="post">
-
+				<form action="{{route('attendance.store')}}" method="post">
+					@csrf
 					{{-- 1 --}}
 					<div class="row">
 						<div class="col">
-							<label for="inputName" class="control-label">اسـم الموظـف</label>
-							<input type="text" class="form-control" id="inputName" name="name"
-								title="يرجي ادخال اسـم الموظـف" required>
-						</div>
-
-						<div class="col">
-							<label for="inputName" class="control-label">عنوان الموظـف</label>
-							<input type="text" class="form-control" id="inputName" name="address"
-								title="يرجي ادخال عنوان الموظـف" required>
-						</div>
-
-						<div class="col">
-							<label for="inputName" class="control-label">رقم الهاتـف</label>
-							<input type="number" class="form-control" id="inputName" name="phone"
-								title="يرجي ادخال رقم الهاتـف" required>
-						</div>
-
-					</div>
-
-					{{-- 2 --}}
-					<div class="row">
-						<label class="my-1 mr-2" for="inlineFormCustomSelectPref">القسم</label>
-                            <select name="department" id="section_id" class="form-control" required>
-                                <option value="" selected disabled> --حدد القسم--</option>
-                                @foreach ($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+							<label class="my-1 mr-2" for="inlineFormCustomSelectPref">الموظـف</label>
+                            <select name="empid" id="section_id" class="form-control" required>
+                                <option value="" selected disabled> --حدد الموظـف--</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
                                 @endforeach
                             </select>
+						</div>
 
 						<div class="col">
-							<label for="inputName" class="control-label">الـراتب</label>
-							<input type="number" class="form-control" id="inputName" name="salary"
-								title="الـراتب" required>
+							<label for="inputName" class="control-label">التاريخ</label>
+							<input type="date" class="form-control" id="inputName" name="date"
+								 required>
+						</div>
+
 						</div>
 
 					</div>

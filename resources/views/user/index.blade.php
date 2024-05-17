@@ -17,6 +17,7 @@
                             <button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('user.create')}}"><i class="mdi mdi-plus"></i></a></button>
                         </div>
                     </div>
+                    
 				</div>
 				<!-- breadcrumb -->
 @endsection
@@ -72,8 +73,9 @@
                                                 <th class="border-bottom-0">#</th>
                                                 <th class="border-bottom-0">اسم المستخدم</th>
                                                 <th class="border-bottom-0">البريـد الالكترونـي</th>
-                                                <th class="border-bottom-0">الحالـة</th>
+                                                {{-- <th class="border-bottom-0">الحالـة</th> --}}
                                                 <th class="border-bottom-0">العمليات</th>
+                                                <th class="border-bottom-0">الصلاحيـات</th>
                 
                                             </tr>
                                         </thead>
@@ -85,14 +87,17 @@
                                                     <td>{{ $i }}</td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->status ==0?"غير فعال":"فعال" }}</td>
+                                                    {{-- <td>{{ $user->status ==0?"غير فعال":"فعال" }}</td> --}}
                                                     <td>
                                                         <a class=" btn btn-sm btn-info"  href="{{route('user.edit',$user->id)}}" title="تعديل"><i class="las la-pen"></i></a>
                                                     {{-- <!-- @endcan --> --}}
-                
                                                     {{-- <!-- @can('حذف قسم') --> --}}
                                                     <a class=" btn btn-sm btn-danger"  href="{{route('user.destroy',$user->id)}}" title="حذف"><i class="las la-trash"></i></a>
                 
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary  "><a class="btn text-white" href="{{route('user.indexPermission',$user->id)}}">عرض الصلاحيـات</a></button>                                      
+                                                        {{-- <button type="button" class="btn btn-primary  btn-icon "><a class="btn" href="{{route('user.indexPermission',$user)}}">عرض الصلاحيـات</a></button>                                       --}}
                                                     </td>
                                                 </tr>
                                             @endforeach

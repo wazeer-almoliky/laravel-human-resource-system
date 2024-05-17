@@ -56,7 +56,7 @@
 					{{-- 1 --}}
 					<div class="row">
 						<label class="my-1 mr-2" for="inlineFormCustomSelectPref">الموظـف</label>
-                            <select name="employee" id="section_id" class="form-control" required>
+                            <select name="empid" id="section_id" class="form-control" required>
                                 <option value="" selected disabled> --حدد الموظـف--</option>
                                 @foreach ($employees as $employee)
                                     <option value="{{ $employee->id }}">{{ $employee->name }}</option>

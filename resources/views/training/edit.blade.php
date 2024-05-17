@@ -59,7 +59,7 @@
 					<div class="row">
 						   <div class="col">
 								<label class="my-1 mr-2" for="inlineFormCustomSelectPref">الموظـف</label>
-								<select name="employee" id="section_id" class="form-control" required>
+								<select name="empid" id="section_id" class="form-control" required>
 									<option value="" selected disabled> --حدد الموظـف--</option>
 									@foreach ($employees as $employee)
 										<option value="{{ $employee->id }}">{{ $employee->name }}</option>
@@ -68,7 +68,7 @@
 						   </div>
 						   <div class="col">
 								<label class="my-1 mr-2" for="inlineFormCustomSelectPref">الدورة</label>
-								<select name="course" id="section_id" class="form-control" required>
+								<select name="courseid" id="section_id" class="form-control" required>
 									<option value="" selected disabled> --حدد الدورة--</option>
 									@foreach ($courses as $course)
 										<option value="{{ $course->id }}">{{ $course->name }}</option>

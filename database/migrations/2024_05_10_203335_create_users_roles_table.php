@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_role', function (Blueprint $table) {
+        Schema::create('users_roles', function (Blueprint $table) {
             $table->foreignId('user_id');
             $table->foreignId('role_id');
             $table->primary(['user_id','role_id']);

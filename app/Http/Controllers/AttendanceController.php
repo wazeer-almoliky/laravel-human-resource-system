@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -21,7 +22,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        return view('attendance.create');
+        $employees = Employee::all();
+        return view('attendance.create',compact('employees'));
     }
 
     /**
@@ -29,7 +31,7 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->request([
+        $request->validate([
             'checkin' => 'required',
             'checkout' => 'required',
             'empid' => 'required',
@@ -39,11 +41,11 @@ class AttendanceController extends Controller
         Attendance::create([
             'checkin' => $request->checkin,
             'checkout' => $request->checkout,
-            'empid' => $request->employee,
+            'empid' => $request->empid,
             'state' => $request->state,
             'date' => $request->date,
         ]);
-        return redirect()->route('attendance.index')->with('success', 'تم الحفــظ بنجــاح');
+        return redirect()->route('attendance.index')->with('add', 'تم الحفــظ بنجــاح');
     }
 
     /**
@@ -68,7 +70,7 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->request([
+        $request->validate([
             'checkin' => 'required',
             'checkout' => 'required',
             'empid' => 'required',
@@ -83,7 +85,7 @@ class AttendanceController extends Controller
             'state' => $request->state,
             'date' => $request->date,
         ]);
-        return redirect()->route('attendance.index')->with('success', 'تم التعديــل بنجــاح');
+        return redirect()->route('attendance.index')->with('update', 'تم التعديــل بنجــاح');
     }
 
     /**
@@ -92,6 +94,6 @@ class AttendanceController extends Controller
     public function destroy($id)
     {
         Attendance::findorFail($id)->delete();
-        return redirect()->route('attendance.index')->with('success', 'تم الحــذف بنجــاح');
+        return redirect()->route('attendance.index')->with('delete', 'تم الحــذف بنجــاح');
     }
 }

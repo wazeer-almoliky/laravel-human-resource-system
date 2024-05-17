@@ -23,6 +23,11 @@
 			<button type="button" class="btn btn-primary  btn-icon ml-2"><i class="mdi mdi-plus"></i></button>
 		</div>
 	</div>
+	{{-- <div class="d-flex my-xl-auto right-content">
+		<div class="pr-1 mb-3 mb-xl-0">
+			<button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('attendance.report')}}">عرض التفارير</a></button>
+		</div>
+	</div> --}}
 </div>
 <!-- breadcrumb -->
 @endsection
@@ -76,10 +81,7 @@
 							<tr>
 								<th class="border-bottom-0">#</th>
 								<th class="border-bottom-0">اسم الموظـف</th>
-								<th class="border-bottom-0">عنوان الموظـف</th>
-								<th class="border-bottom-0">رقم الموظـف</th>
-								<th class="border-bottom-0">القسم</th>
-								<th class="border-bottom-0">الـراتب</th>
+								<th class="border-bottom-0">تاريخ التحضير</th>
 								<th class="border-bottom-0">الحالـة</th>
 								<th class="border-bottom-0">العمليات</th>
 
@@ -87,22 +89,19 @@
 						</thead>
 						<tbody>
 							<?php $i = 0; ?>
-							@foreach ($employees as $employee)
+							@foreach ($attendances as $attendance)
 								<?php $i++; ?>
 								<tr>
 									<td>{{ $i }}</td>
-									<td>{{ $employee->name }}</td>
-									<td>{{ $employee->address }}</td>
-									<td>{{ $employee->phone }}</td>
-									<td>{{ $employee->department->name }}</td>
-									<td>{{ $employee->salary }}</td>
-									<td>{{ $employee->state }}</td>
+									<td>{{ $attendance->employee->name }}</td>
+									<td>{{ $attendance->date }}</td>
+									<td>{{ $attendance->state }}</td>
 									<td>
-										<a class=" btn btn-sm btn-info"  href="{{route('attendance.edit',$employee->id)}}" title="تعديل"><i class="las la-pen"></i></a>
+										<a class=" btn btn-sm btn-info"  href="{{route('attendance.edit',$attendance->id)}}" title="تعديل"><i class="las la-pen"></i></a>
 									{{-- <!-- @endcan --> --}}
 
 									{{-- <!-- @can('حذف قسم') --> --}}
-									<a class=" btn btn-sm btn-danger"  href="{{route('attendance.destroy',$employee->id)}}" title="حذف"><i class="las la-trash"></i></a>
+									<a class=" btn btn-sm btn-danger"  href="{{route('attendance.destroy',$attendance->id)}}" title="حذف"><i class="las la-trash"></i></a>
 										{{-- @endcan --}}
 
 									</td>

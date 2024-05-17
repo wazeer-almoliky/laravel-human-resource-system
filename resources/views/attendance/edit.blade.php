@@ -50,62 +50,34 @@
 	<div class="col-lg-12 col-md-12">>
 		<div class="card">
 			<div class="card-body">
-				<form action="{{route('employee.update',{{$employee->id}})}}" method="post">
-
+				<form action="{{route('attendance.update',{{$attendance->id}})}}" method="post">
+					@method('PUT')
+					@csrf
 					{{-- 1 --}}
 					<div class="row">
 						<div class="col">
-							<label for="inputName" class="control-label">اسـم الموظـف</label>
-							<input type="text" class="form-control" id="inputName" name="name"
-								title="يرجي ادخال اسـم الموظـف" required value="{{$employee->name}}">
-						</div>
-
-						<div class="col">
-							<label for="inputName" class="control-label">عنوان الموظـف</label>
-							<input type="text" class="form-control" id="inputName" name="address"
-								title="يرجي ادخال عنوان الموظـف" required value="{{$employee->address}}">
-						</div>
-
-						<div class="col">
-							<label for="inputName" class="control-label">رقم الهاتـف</label>
-							<input type="number" class="form-control" id="inputName" name="phone"
-								title="يرجي ادخال رقم الهاتـف" required value="{{$employee->phone}}">
-						</div>
-
-					</div>
-
-					{{-- 2 --}}
-					<div class="row">
-						<div class="col">
-							<label class="my-1 mr-2" for="inlineFormCustomSelectPref">القسم</label>
-                            <select name="department" id="section_id" class="form-control" required>
-                                <option value="" selected disabled> --حدد القسم--</option>
-                                @foreach ($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+							<label class="my-1 mr-2" for="inlineFormCustomSelectPref">الموظـف</label>
+                            <select name="empid" id="section_id" class="form-control" required>
+                                <option value="" selected disabled> --حدد الموظـف--</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
                                 @endforeach
                             </select>
 						</div>
 
 						<div class="col">
-							<label for="inputName" class="control-label">الـراتب</label>
-							<input type="number" class="form-control" id="inputName" name="salary"
-								title="الـراتب" required value="{{$employee->salary}}">
+							<label for="inputName" class="control-label">التاريخ</label>
+							<input type="date" class="form-control" id="inputName" name="date"
+								 required>
 						</div>
 
-						<div class="col">
-							<label class="my-1 mr-2" for="inlineFormCustomSelectPref">الحالـة</label>
-                            <select name="state" id="section_id" class="form-control" required>
-                                <option value="0" selected>غير فعـال</option>
-                                <option value="1" selected>فعـال</option>
-                            </select>
 						</div>
 
 					</div>
 
 					<div class="d-flex justify-content-center">
-						<button type="submit" class="btn btn-primary">تعديل البيانات</button>
+						<button type="submit" class="btn btn-primary">حفظ البيانات</button>
 					</div>
-
 				</form>
 			</div>
 		</div>

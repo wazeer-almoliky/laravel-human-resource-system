@@ -35,13 +35,13 @@ class BalanceController extends Controller
         $request->validate([
             'amount' => 'required',
             'type' => 'required',
-            
+            'empid'=>'required',
             'date' => 'required'
         ]);
         Balance::create([
             'amount' => $request->amount,
             'type' => $request->type,
-            'empid' => $request->employee,
+            'empid' => $request->empid,
             // 'date' => $request->date,
         ]);
         return redirect()->route('balance.index')->with('add', 'تم الحفظ بنجــاح');
@@ -72,7 +72,7 @@ class BalanceController extends Controller
         $request->request([
             'amount' => 'required',
             'type' => 'required',
-            // 'empid' => 'required',
+            'empid' => 'required',
             'state' => 'required',
             'date' => 'required'
         ]);
@@ -80,8 +80,8 @@ class BalanceController extends Controller
         $balance->update([
             'amount' => $request->amount,
             'type' => $request->type,
-            'empid' => $request->employee,
-            // 'state' => $request->state,
+            'empid' => $request->empid,
+            'state' => 1,
             // 'date' => $request->date,
         ]);
         return redirect()->route('balance.index')->with('success', 'تم التعديـل بنجــاح');

@@ -23,6 +23,11 @@
 			<button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('employee.create')}}"><i class="mdi mdi-plus"></i></a></button>
 		</div>
 	</div>
+	{{-- <div class="d-flex my-xl-auto right-content">
+		<div class="pr-1 mb-3 mb-xl-0">
+			<button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('employee.report')}}">عرض التفارير</a></button>
+		</div>
+	</div> --}}
 </div>
 <!-- breadcrumb -->
 @endsection

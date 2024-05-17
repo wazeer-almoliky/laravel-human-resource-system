@@ -8,7 +8,7 @@
 <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @section('title')
-الاقسام
+الاجازات
 @stop
 
 @endsection
@@ -18,19 +18,15 @@
 	<div class="my-auto">
 		<div class="d-flex">
 			<h4 class="content-title mb-0 my-auto"></h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-				الاقسام</span>
+				الاجازات</span>
 		</div>
 	</div>
 	<div class="d-flex my-xl-auto right-content">
 		<div class="pr-1 mb-3 mb-xl-0">
-			<button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('department.create')}}"><i class="mdi mdi-plus"></i></a></button>
+			<button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('occasion.create')}}"><i class="mdi mdi-plus"></i></a></button>
 		</div>
 	</div>
-	<div class="d-flex my-xl-auto right-content">
-		<div class="pr-1 mb-3 mb-xl-0">
-			<button type="button" class="btn btn-primary  btn-icon ml-2"><a class="btn btn-sm" href="{{route('department.report')}}">عرض التفارير</a></button>
-		</div>
-	</div>
+
 </div>
 <!-- breadcrumb -->
 @endsection
@@ -87,23 +83,25 @@
 						<thead>
 							<tr>
 								<th class="border-bottom-0">#</th>
-								<th class="border-bottom-0">اسم القسم</th>
+								<th class="border-bottom-0">اسم الاجــازة</th>
+								<th class="border-bottom-0">تاريخ الاجــازة</th>
 								<th class="border-bottom-0">العمليات</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php $i = 0; ?>
-							@foreach ($departments as $x)
+							@foreach ($occasions as $x)
 							<?php $i++; ?>
 							<tr>
 								<td>{{ $i }}</td>
 								<td>{{ $x->name }}</td>
+								<td>{{ $x->date }}</td>
 								<td>
-									<a class=" btn btn-sm btn-info"  href="{{route('department.edit',$x->id)}}" title="تعديل"><i class="las la-pen"></i></a>
+									<a class=" btn btn-sm btn-info"  href="{{route('occasion.edit',$x->id)}}" title="تعديل"><i class="las la-pen"></i></a>
 									{{-- <!-- @endcan --> --}}
 
 									{{-- <!-- @can('حذف قسم') --> --}}
-									<a class=" btn btn-sm btn-danger"  href="{{route('department.destroy',$x->id)}}" title="حذف"><i class="las la-trash"></i></a>
+									<a class=" btn btn-sm btn-danger"  href="{{route('occasion.destroy',$x->id)}}" title="حذف"><i class="las la-trash"></i></a>
 								</td>
 							</tr>
 							@endforeach
@@ -114,6 +112,7 @@
 		</div>
 	</div>
 
+	</div>
 
 	<!-- row closed -->
 </div>

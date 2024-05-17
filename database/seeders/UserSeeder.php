@@ -14,19 +14,29 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::insert([
-            ['name'=>'wazeer','email'=>'wazeer@gmail.com','password'=>Hash::make('wazeer123456')],
-            ['name'=>'name','email'=>'name@gmail.com','password'=>Hash::make('name123456')],
+            ['name'=>'admin','email'=>'admin@gmail.com','password'=>Hash::make('admin123456')],
+            
         ]);
 
         Role::insert([
-            ['name'=>'admin','slug'=>'admin'],
-            ['name'=>'user','slug'=>'user'],
-            ['name'=>'owner','slug'=>'owner'],
+            ['name'=>'المدير','slug'=>'المدير'],
+            ['name'=>'ادمن','slug'=>'ادمن'],
+            ['name'=>'مستخدم','slug'=>'مستخدم'],
+            ['name'=>'متدرب','slug'=>'متدرب'],
         ]);
+        
+        $permissions = ['اعدادات بيئة المنشأة','الاعـدادات العـامة','عرض الاعـدادات','اعدادات جهاز البصمة','الاقسام','اضافة قســم','عرض الاقسام','الدورات التدريبية','اضافة دورة','عرض الدورات','الموظفين','اضافة موظف','تقارير الموظفين','الحضور والانصراف','تسجيـل','تقارير التحضير','تدريب الموظفين','طلب تدريب','تقارير التدريب','الرواتب','صرف راتب','عرض التقارير','المستخدمين','الصلاحيـات','الادوار','الاجازات','اضافة اجازة','عرض الاجازات','حذف','تعديل'];
+        foreach ($permissions as $permission) {
         Permission::insert([
-            ['name'=>'add','slug'=>'add'],
-            ['user'=>'update','slug'=>'update'],
-            ['owner'=>'delete','slug'=>'delete'],
-        ]);
+            ['name'=>$permission,'slug'=>$permission],
+        ]);}
+        //=========================
+        $user = User::where('name','admin')->first();
+        $role = Role::where('slug','المدير')->first();
+        $user->roles()->attach($role);
+
+        foreach (Permission::all() as $permission) {
+            $user->permissions()->attach($permission);
+        }
     }
 }

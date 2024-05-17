@@ -34,13 +34,13 @@ class TrainingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'empid' => 'required',
-            // 'courseid' => 'required',
+            'empid' => 'required',
+            'courseid' => 'required',
             'date' => 'required',
         ]);
         Training::create([
-            'empid' => $request->employee,
-            'courseid' => $request->course,
+            'empid' => $request->empid,
+            'courseid' => $request->courseid,
             // 'date' => $request->date,
         ]);
         return redirect()->route('training.index')->with('add', 'تم الحفــظ بنجــاح');
@@ -69,14 +69,15 @@ class TrainingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'empid' => 'required',
-            // 'courseid' => 'required',
+            'empid' => 'required',
+            'courseid' => 'required',
             'date' => 'required',
         ]);
         $training =  Training::findorfail($id);
         $training->update([
-            'empid' => $request->employee,
+            'empid' => $request->empid,
             'courseid' => $request->course,
+            'state'=>1
             // 'date' => $request->date,
         ]);
         return redirect()->route('training.index')->with('update', 'تم التعديــل بنجــاح');

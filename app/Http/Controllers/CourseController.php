@@ -75,6 +75,6 @@ class CourseController extends Controller
     public function destroy($id)
     {
         $course = Course::findorfail($id)->delete();
-        return redirect()->route('course.index')->with('update', 'تم الحذف بنجــاح');
+        return redirect()->route('course.index')->with('delete', 'تم الحذف بنجــاح');
     }
 }
